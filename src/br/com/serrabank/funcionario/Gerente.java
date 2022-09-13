@@ -1,5 +1,7 @@
 package br.com.serrabank.funcionario;
 
+import java.util.Scanner;
+
 public class Gerente extends Funcionario {
 
 	private int agencia;

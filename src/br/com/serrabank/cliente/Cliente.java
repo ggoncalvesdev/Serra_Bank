@@ -14,6 +14,18 @@ public class Cliente {
 		this.senha = senha;
 		this.cpf = cpf;
 	}
+	
+	public void setTitular(String titular) {
+		this.titular = titular;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 
 	public String getNome() {
 		return titular;

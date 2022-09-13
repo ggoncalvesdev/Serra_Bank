@@ -9,8 +9,11 @@ public class ContaCorrente extends Conta {
 		super();
 	}
 	
-	public ContaCorrente(Cliente cliente, int agencia) {
-		super(cliente, agencia);
+	public ContaCorrente(String nome, String cpf, double saldo, int agencia) {
+		setTitular(nome);
+		setCpf(cpf);
+		setSaldo(saldo);
+		setAgencia(agencia);
 	}
 		
 	@Override

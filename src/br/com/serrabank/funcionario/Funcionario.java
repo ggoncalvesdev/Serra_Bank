@@ -16,6 +16,10 @@ public abstract class Funcionario {
 		this.cpf = cpf;
 	}
 
+	public void trocarSenha(String senha) {
+		this.senha = senha;
+	}
+	
 	public String getSenha() {
 		return senha;
 	}

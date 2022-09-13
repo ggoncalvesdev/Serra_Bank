@@ -9,13 +9,16 @@ public class ContaPoupanca extends Conta {
 		super();
 	}
 	
-	public ContaPoupanca(Cliente cliente, int agencia) {
-		super(cliente, agencia);
+	public ContaPoupanca(String nome, String cpf, double saldo, int agencia) {
+		setTitular(nome);
+		setCpf(cpf);
+		setSaldo(saldo);
+		setAgencia(agencia);
 	}
 		
 	@Override
 	public String toString() {
-		return "ContaPoupança [getSaldo()=" + getSaldo() + ", Agencia=" + getAgencia() + ", getNome()=" + getNome()
+		return "ContaPoupanï¿½a [getSaldo()=" + getSaldo() + ", Agencia=" + getAgencia() + ", getNome()=" + getNome()
 				+ ", getCpf()=" + getCpf() + "]";
 	}
 	

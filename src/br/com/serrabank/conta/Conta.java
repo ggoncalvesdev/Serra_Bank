@@ -25,6 +25,14 @@ public abstract class Conta extends Cliente {
 		this.agencia = agencia;
 		numeroDeContasCadastradas ++;
 	}
+	
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+	
+	public void setAgencia(int agencia) {
+		this.agencia = agencia;
+	}
 
 	public double getSaldo() {
 		return saldo;
