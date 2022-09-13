@@ -1,6 +1,5 @@
 package br.com.serrabank.conta.conta_corrente;
 
-import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
 
 public class ContaCorrente extends Conta {
