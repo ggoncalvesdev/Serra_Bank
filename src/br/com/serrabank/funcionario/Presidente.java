@@ -1,6 +1,7 @@
 package br.com.serrabank.funcionario;
 
 public class Presidente extends Funcionario {
+	private static final String CARGO = "PRESIDENTE";
 
 	public Presidente () {
 	}
@@ -9,6 +10,10 @@ public class Presidente extends Funcionario {
 		setNome(nome);
 		trocarSenha(senha);
 		setCpf(cpf);
+	}
+
+	public static String getCargo() {
+		return CARGO;
 	}
 	
 }

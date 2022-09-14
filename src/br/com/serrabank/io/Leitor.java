@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
 import br.com.serrabank.conta.conta_poupanca.ContaPoupanca;
@@ -29,10 +30,10 @@ public class Leitor {
 		        String[] lerlinha = linha.split(";");
 	  	
 		        		if(	Integer.parseInt(lerlinha[0]) == (TipoEnum.POUPANCA.ordinal())	) {
-		            	Conta poupanca = new ContaPoupanca(lerlinha[1],lerlinha[2],Double.parseDouble(lerlinha[3]),Integer.parseInt(lerlinha[4]));
+		            	Cliente poupanca = new ContaPoupanca(lerlinha[1],lerlinha[2],lerlinha[3],Double.parseDouble(lerlinha[4]),Integer.parseInt(lerlinha[5]));
 		            	}
 		        		if(	Integer.parseInt(lerlinha[0]) == (TipoEnum.CORRENTE.ordinal())	) {
-			            Conta corrente = new ContaCorrente(lerlinha[1],lerlinha[2],Double.parseDouble(lerlinha[3]),Integer.parseInt(lerlinha[4]));
+			            Cliente corrente = new ContaCorrente(lerlinha[1],lerlinha[2],lerlinha[3],Double.parseDouble(lerlinha[4]),Integer.parseInt(lerlinha[5]));
 		            	}
 				}else 
 					break;

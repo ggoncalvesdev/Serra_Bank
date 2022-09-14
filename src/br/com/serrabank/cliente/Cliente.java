@@ -1,7 +1,7 @@
 package br.com.serrabank.cliente;
 
 public class Cliente {
-	
+	private static final String CARGO = "CLIENTE";
 	private String titular;
 	private String senha;
 	private String cpf;
@@ -38,5 +38,11 @@ public class Cliente {
 	public String getCpf() {
 		return cpf;
 	}
+
+	public static String getCargo() {
+		return CARGO;
+	}
+	
+	
 	
 }
