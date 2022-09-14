@@ -1,16 +1,16 @@
 package br.com.serrabank.funcionario;
 
-import java.util.Scanner;
-
 public class Gerente extends Funcionario {
-
+	private static final String CARGO = "GERENTE";
 	private int agencia;
 
 	public Gerente() {
 	}
 
-	public Gerente(String senha, String cpf, int agencia) {
-		super(senha, cpf);
+	public Gerente(String nome, String senha, String cpf, int agencia) {
+		setNome(nome);
+		trocarSenha(senha);
+		setCpf(cpf);
 		this.agencia = agencia;
 	}
 
@@ -20,5 +20,9 @@ public class Gerente extends Funcionario {
 
 	public void setAgencia(int agencia) {
 		this.agencia = agencia;
+	}
+
+	public static String getCargo() {
+		return CARGO;
 	}
 }

@@ -1,16 +1,15 @@
 package br.com.serrabank.funcionario;
 
 public abstract class Funcionario {
-
+	private String nome;
 	private String senha;
 	private String cpf;
 	//private String cargo;
 	
 	public Funcionario() {
-		
 	}
 	
-	public Funcionario(String senha, String cpf) {
+	public Funcionario(String nome, String senha, String cpf) {
 		super();
 		this.senha = senha;
 		this.cpf = cpf;
@@ -18,6 +17,18 @@ public abstract class Funcionario {
 
 	public void trocarSenha(String senha) {
 		this.senha = senha;
+	}	
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	
 	public String getSenha() {
