@@ -14,12 +14,13 @@ public class ContaPoupanca extends Conta {
 		setSaldo(saldo);
 		setAgencia(agencia);
 	}
-		
+
 	@Override
 	public String toString() {
-		return "ContaPoupan�a [getSaldo()=" + getSaldo() + ", Agencia=" + getAgencia() + ", getNome()=" + getNome()
-				+ ", getCpf()=" + getCpf() + "]";
+		return "ContaPoupanca [agencia=" + agencia + ", getSaldo()=" + getSaldo() + ", getNome()=" + getNome()
+				+ ", getSenha()=" + getSenha() + ", getCpf()=" + getCpf() + "]";
 	}
-	
+		
+
 	
 }

@@ -3,6 +3,7 @@ package br.com.serrabank.conta.conta_corrente;
 import br.com.serrabank.conta.Conta;
 
 public class ContaCorrente extends Conta {
+	private static final String CARGO = "GERENTE";
 	
 	public ContaCorrente() {
 		super();
@@ -14,11 +15,11 @@ public class ContaCorrente extends Conta {
 		setSaldo(saldo);
 		setAgencia(agencia);
 	}
-		
+
 	@Override
 	public String toString() {
-		return "ContaCorrente [getSaldo()=" + getSaldo() + ", getAgencia()=" + getAgencia() + ", getNome()=" + getNome()
-				+ ", getCpf()=" + getCpf() + "]";
+		return "ContaCorrente [getSaldo()=" + getSaldo() + ", getNome()=" + getNome() + ", getSenha()=" + getSenha()
+				+ ", getCpf()=" + getCpf() + ", agencia=" + agencia + "]";
 	}
 	
 	

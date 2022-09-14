@@ -5,7 +5,10 @@ public class Presidente extends Funcionario {
 	public Presidente () {
 	}
 	
-	public Presidente(String senha, String cpf) {
-		super(senha, cpf);
+	public Presidente(String nome, String senha, String cpf) {
+		setNome(nome);
+		trocarSenha(senha);
+		setCpf(cpf);
 	}
+	
 }
