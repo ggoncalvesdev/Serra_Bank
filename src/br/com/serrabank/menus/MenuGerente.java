@@ -102,7 +102,7 @@ public class MenuGerente {
 				break;
 				
 				case 4:
-					funcionario.menuFuncionario(funcionario);
+					funcionario.menuFuncionario (funcionario);
 				break;
 				
 				default: System.out.println("Opção inválida\n"); 
