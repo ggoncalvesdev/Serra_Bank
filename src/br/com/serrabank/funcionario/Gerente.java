@@ -1,5 +1,7 @@
 package br.com.serrabank.funcionario;
 
+import br.com.serrabank.menus.MenuGerente;
+
 public class Gerente extends Funcionario {
 	private static final String CARGO = "GERENTE";
 	private int agencia;
@@ -24,5 +26,11 @@ public class Gerente extends Funcionario {
 
 	public static String getCargo() {
 		return CARGO;
+	}
+
+	@Override
+	public void menuFuncionario() {
+		MenuGerente.menuGerente();
+		
 	}
 }
