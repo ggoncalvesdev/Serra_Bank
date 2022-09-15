@@ -2,11 +2,13 @@ package br.com.serrabank.menus;
 
 import java.util.Scanner;
 
+import br.com.serrabank.funcionario.Funcionario;
+
 public class MenuGerente {
 
 	static Scanner ler = new Scanner(System.in);
 		
-	public static void menuGerente() {	
+	public static void menuGerente(Funcionario funcionario) {	
 			int opcao;
 			
 			do {
@@ -21,10 +23,10 @@ public class MenuGerente {
 				
 				switch(opcao) {
 				
-				case 1: menuMovimentacoesEInfoConta();
+				case 1: menuMovimentacoesEInfoConta(funcionario);
 				break;
 					
-				case 2: menuRelatoriosGerente();
+				case 2: menuRelatoriosGerente(funcionario);
 				break;
 				
 				case 3:
@@ -37,7 +39,7 @@ public class MenuGerente {
 			}while(opcao != 3);
 		}
 		
-		public static void menuMovimentacoesEInfoConta() {
+		public static void menuMovimentacoesEInfoConta(Funcionario funcionario) {
 	        int opcao;
 
 	        do {
@@ -54,22 +56,22 @@ public class MenuGerente {
 
 	            switch(opcao) {
 	            case 1:
-	       //     	saque();
+	       //     	funcionario.saque();
 	            break;
 	            case 2:
-	      //      	deposito();
+	      //      	funcionario.deposito();
 	            break;
 	            case 3:
-	      //      	tranfereciaOutraConta();
+	      //      	fucionario.tranfereciaOutraConta();
 	            break;
-	            case 4: menuGerente();
+	            case 4: funcionario.menuFuncionario(funcionario);
 	            break;
 	            default:  System.out.println("Opção inválida"); 
 	            }
 	        }while(opcao != 4);
 	    }
 		
-		public static void menuRelatoriosGerente()	{
+		public static void menuRelatoriosGerente(Funcionario funcionario)	{
 			int opcao;
 			
 			do {
@@ -100,7 +102,7 @@ public class MenuGerente {
 				break;
 				
 				case 4:
-					menuGerente();
+					funcionario.menuFuncionario(funcionario);
 				break;
 				
 				default: System.out.println("Opção inválida\n"); 
