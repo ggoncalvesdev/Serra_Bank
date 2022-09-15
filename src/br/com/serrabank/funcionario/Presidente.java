@@ -15,5 +15,11 @@ public class Presidente extends Funcionario {
 	public static String getCargo() {
 		return CARGO;
 	}
+
+	@Override
+	public void menuFuncionario() {
+		MenuPresidente.menuPresidente();
+		
+	}
 	
 }

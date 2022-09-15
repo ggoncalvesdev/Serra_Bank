@@ -14,6 +14,8 @@ public abstract class Funcionario {
 		this.senha = senha;
 		this.cpf = cpf;
 	}
+	
+	public abstract void menuFuncionario();
 
 	public void trocarSenha(String senha) {
 		this.senha = senha;
