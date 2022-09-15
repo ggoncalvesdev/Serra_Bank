@@ -3,9 +3,10 @@ package br.com.serrabank.io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.com.serrabank.cliente.Cliente;
-import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
 import br.com.serrabank.conta.conta_poupanca.ContaPoupanca;
 import br.com.serrabank.enums.CargoEnum;
@@ -17,10 +18,12 @@ import br.com.serrabank.funcionario.Presidente;
 
 public class Leitor {
 
+	public static Map<String, Cliente> mapaContas = new HashMap<>();
 	
 	public static void criadorContas(String path) throws IOException {
 //		String path = ".\\arquivos";
 		String linha = "";
+	
 		BufferedReader br = new BufferedReader(new FileReader(path + "\\" + "Clientes.txt"));		
 		
 			while (true)  {	     
@@ -31,14 +34,15 @@ public class Leitor {
 	  	
 		        		if(	Integer.parseInt(lerlinha[0]) == (TipoEnum.POUPANCA.ordinal())	) {
 		            	Cliente poupanca = new ContaPoupanca(lerlinha[1],lerlinha[2],lerlinha[3],Double.parseDouble(lerlinha[4]),Integer.parseInt(lerlinha[5]));
-		            	}
+		            	mapaContas.put(lerlinha[3], poupanca);
+		        		}
 		        		if(	Integer.parseInt(lerlinha[0]) == (TipoEnum.CORRENTE.ordinal())	) {
 			            Cliente corrente = new ContaCorrente(lerlinha[1],lerlinha[2],lerlinha[3],Double.parseDouble(lerlinha[4]),Integer.parseInt(lerlinha[5]));
-		            	}
+			            mapaContas.put(lerlinha[3], corrente);
+		        		}
 				}else 
-					break;
-				
-			}
+					break;	
+			}	
 		br.close();
 	}
 	
