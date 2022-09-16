@@ -16,7 +16,7 @@ public class Login {
 	private static final Scanner entrada = new Scanner(System.in);
     private static final PrintStream saida = System.out;
 
-	public static void loginCliente(Map<String, Cliente> mapaContas) {
+	public static void loginCliente(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
 		
 		do {
 			saida.print("Digite seu login: ");
@@ -28,11 +28,11 @@ public class Login {
 				Conta usuarioLogado = (Conta) mapaContas.get(login);
 				
 				if(usuarioLogado.getTipo() == TipoEnum.CORRENTE.name()) {
-					MenuContaCorrente.menuContaCorrente(usuarioLogado, mapaContas);
+					MenuContaCorrente.menuContaCorrente(usuarioLogado, mapaContas, mapaFuncionario);
 					break;
 				} 
 					if(usuarioLogado.getTipo() == TipoEnum.POUPANCA.name()) {
-						MenuContaPoupanca.menuContaPoupanca(usuarioLogado, mapaContas);
+						MenuContaPoupanca.menuContaPoupanca(usuarioLogado, mapaContas, mapaFuncionario);
 						break;
 					}
 			
@@ -42,7 +42,7 @@ public class Login {
 		} while (true);			 	
 	}
 	
-	public static void loginFuncionario(Map<String, Funcionario> mapaFuncionario) { 
+	public static void loginFuncionario(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) { 
 		Scanner in = new Scanner (System.in); 
 		do {
 		System.out.println ("Digite seu CPF:") ;
@@ -52,7 +52,7 @@ public class Login {
 		Funcionario usuarioLogado = mapaFuncionario.get(login);
 		
 		if(mapaFuncionario.containsKey(login) && senha.equals(usuarioLogado.getSenha())) { 
-			usuarioLogado.menuFuncionario(usuarioLogado, mapaFuncionario);
+			usuarioLogado.menuFuncionario(usuarioLogado, mapaContas, mapaFuncionario);
 			break;
 		}	else	{
 			System.out.println ("Login ou senha inválidos! Tente novamente");

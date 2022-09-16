@@ -17,21 +17,24 @@ public class MenuInicial {
 		do {
 		
 			System.out.println("\n\t SERRA BANK - LOGIN \n");
-			System.out.println("\n----------------------------------------------");
-			System.out.println("\n--- Você é cliente ou Funcionario? ---\n");
-			System.out.println("\n 1 - Sou Cliente.");
-			System.out.println("\n 2 - Sou Funcionário.");
-			System.out.println("\n 3 - Sair do sitema.\n ");
-			System.out.println("\n----------------------------------------------\n");
+			System.out.println("----------------------------------------------");
+			System.out.println("--- Você é cliente ou Funcionario? ---\n");
+			System.out.println("1 - Sou Cliente.");
+			System.out.println("2 - Sou Funcionário.");
+			System.out.println("3 - Sair do sistema.\n ");
+			System.out.println("----------------------------------------------\n");
 			opcao = ler.nextInt();
 			
 			switch(opcao) {
 			
-			case 1: Login.loginCliente(mapaContas);
+			case 1: Login.loginCliente(mapaContas, mapaFuncionario);
 					break;
 				
-			case 2: Login.loginFuncionario(mapaFuncionario);
-					break;		
+			case 2: Login.loginFuncionario(mapaContas,mapaFuncionario);
+					break;
+					
+			case 3: System.out.println("Fechando programa.\nVolte Sempre!");
+					System.exit(0);
 			default: 
 				System.out.println("Opção inválida!");		
 			}			
