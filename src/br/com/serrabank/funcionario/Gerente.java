@@ -1,5 +1,6 @@
 package br.com.serrabank.funcionario;
 
+import java.io.IOException;
 import java.util.Map;
 
 import br.com.serrabank.cliente.Cliente;
@@ -84,7 +85,7 @@ public class Gerente extends Funcionario {
 	}
 
 	@Override
-	public void menuFuncionario(Funcionario funcionario, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
+	public void menuFuncionario(Funcionario funcionario, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
 		MenuGerente.menuGerente(funcionario, mapaContas, mapaFuncionario);		
 	}
 }

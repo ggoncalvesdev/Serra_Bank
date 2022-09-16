@@ -1,5 +1,6 @@
 package br.com.serrabank.menus;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class MenuContaCorrente {
 	static Scanner ler = new Scanner(System.in);
 	private static final PrintStream saida = System.out;
 
-	public static void menuContaCorrente(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {	
+	public static void menuContaCorrente(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {	
 		int opcao;
 		
 		do {
@@ -48,7 +49,7 @@ public class MenuContaCorrente {
 		}while(opcao != 3);
 	}
 	
-	public static void menuMovimentacoesConta(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
+	public static void menuMovimentacoesConta(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
         int opcao;
 
         do {
@@ -81,7 +82,7 @@ public class MenuContaCorrente {
         }while(opcao != 4);
     }
 	
-	public static void menuRelatoriosCliente(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario)	{
+	public static void menuRelatoriosCliente(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException	{
 		int opcao;
 		
 		do {

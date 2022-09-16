@@ -1,5 +1,6 @@
 package br.com.serrabank.funcionario;
 
+import java.io.IOException;
 import java.util.Map;
 
 import br.com.serrabank.cliente.Cliente;
@@ -18,7 +19,7 @@ public abstract class Funcionario {
 		this.cpf = cpf;
 	}
 	
-	public abstract void menuFuncionario(Funcionario funcionario, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario);
+	public abstract void menuFuncionario(Funcionario funcionario, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException;
 
 	public void trocarSenha(String senha) {
 		this.senha = senha;

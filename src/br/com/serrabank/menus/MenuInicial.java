@@ -1,5 +1,6 @@
 package br.com.serrabank.menus;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ import br.com.serrabank.login.Login;
 public class MenuInicial {
 	static Scanner ler = new Scanner(System.in);
 
-	public static void menuInicial(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
+	public static void menuInicial(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
 		
 		int opcao;
 		
