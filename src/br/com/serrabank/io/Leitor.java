@@ -18,9 +18,9 @@ import br.com.serrabank.funcionario.Presidente;
 
 public class Leitor {
 
-	public static Map<String, Cliente> mapaContas = new HashMap<>();
+//	public static Map<String, Cliente> mapaContas = new HashMap<>();
 	
-	public static void criadorContas(String path) throws IOException {
+	public static void criadorContas(String path, Map<String, Cliente> mapaContas) throws IOException {
 //		String path = ".\\arquivos";
 		String linha = "";
 	

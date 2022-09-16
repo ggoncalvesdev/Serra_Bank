@@ -4,8 +4,11 @@ import br.com.serrabank.cliente.Cliente;
 
 public abstract class Conta extends Cliente {
 	
+	private static final String TIPO = "";
+	
+	
 	protected int agencia;
-	private double saldo;
+	protected double saldo;
 	private static int numeroDeContasCadastradas = 0;
 	
 	public Conta() {
@@ -14,7 +17,7 @@ public abstract class Conta extends Cliente {
 	
 	public Conta(Cliente cliente, int agencia) {
 		super(cliente.getNome(), cliente.getSenha(), cliente.getCpf());
-		this.saldo = 0;
+		this.saldo = this.saldo + saldo;
 		this.agencia = agencia;
 		numeroDeContasCadastradas ++;
 		
@@ -25,22 +28,18 @@ public abstract class Conta extends Cliente {
 		this.agencia = agencia;
 		numeroDeContasCadastradas ++;
 	}
-	
-	public boolean sacar(double valor) {
-        if (this.saldo < valor) {
-            return false;
-        } else {
+		
+	public void sacar(double valor) {
             this.saldo -= valor;
-            return true;
-        }
 	}
 	
 	public void depositar(double deposito) {
-    	this.saldo = this.saldo + deposito;
+    		this.saldo = this.saldo + deposito;
 	}
 	
-	 public void transere(Conta destino, double valor) {
-	    	if(this.saldo < valor) {
+	 public void transfere(Conta destino, double valor) {
+		
+	    	if(this.saldo < valor) {	
 	    	 System.out.println("Saldo insuficiente"); 		
 	    	 
 	    	} else {
@@ -59,6 +58,10 @@ public abstract class Conta extends Cliente {
 
 	public double getSaldo() {
 		return saldo;
+	}
+	
+	public String getTipo() {
+		return TIPO;
 	}
 
 	public int getAgencia() {

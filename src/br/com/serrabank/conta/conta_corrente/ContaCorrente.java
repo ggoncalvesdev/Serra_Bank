@@ -5,6 +5,8 @@ import br.com.serrabank.conta.Conta;
 public class ContaCorrente extends Conta {
 	private static final String TIPO = "CORRENTE";
 	
+	private static double tributacao;
+	
 	public ContaCorrente() {
 		super();
 	}
@@ -16,9 +18,38 @@ public class ContaCorrente extends Conta {
 		setSaldo(saldo);
 		setAgencia(agencia);
 	}
+	
+	public void sacar(double valor) {
+		this.saldo -= 0.10;
+		tributacao += tributacao + 0.10;
+            this.saldo -= valor;
+	}
+	
+	public void depositar(double deposito) {
+		this.saldo -= 0.10;
+		tributacao += 0.10;
+    		this.saldo = this.saldo + deposito;
+	}
+	
+	public void transfere(Conta destino, double valor) {
+		
+    	if(this.saldo + 0.20 < valor) {	
+    	 System.out.println("Saldo insuficiente"); 		
+    	 
+    	} else {
+    		tributacao += 0.20;
+    		this.saldo -= 0.20;
+    		this.saldo = this.saldo - valor;
+    		destino.setSaldo(destino.getSaldo() + valor);
+    }
+}
 
-	public static String getTipo() {
+	public String getTipo() {
 		return TIPO;
+	}
+
+	public double getTributacao() {
+		return tributacao;
 	}
 
 	@Override
@@ -26,6 +57,5 @@ public class ContaCorrente extends Conta {
 		return "ContaCorrente [getSaldo()=" + getSaldo() + ", getNome()=" + getNome() + ", getSenha()=" + getSenha()
 				+ ", getCpf()=" + getCpf() + ", agencia=" + agencia + "]";
 	}
-	
-	
 }
+

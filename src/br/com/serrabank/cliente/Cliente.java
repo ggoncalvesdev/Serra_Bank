@@ -15,6 +15,7 @@ public class Cliente {
 		this.cpf = cpf;
 	}
 	
+
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}
@@ -42,7 +43,5 @@ public class Cliente {
 	public static String getCargo() {
 		return CARGO;
 	}
-	
-	
-	
+
 }

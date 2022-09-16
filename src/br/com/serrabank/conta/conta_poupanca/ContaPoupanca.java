@@ -17,7 +17,7 @@ public class ContaPoupanca extends Conta {
 		setAgencia(agencia);
 	}
 
-	public static String getTIPO() {
+	public String getTipo() {
 		return TIPO;
 	}
 
@@ -26,7 +26,5 @@ public class ContaPoupanca extends Conta {
 		return "ContaPoupanca [agencia=" + agencia + ", getSaldo()=" + getSaldo() + ", getNome()=" + getNome()
 				+ ", getSenha()=" + getSenha() + ", getCpf()=" + getCpf() + "]";
 	}
-		
 
-	
 }
