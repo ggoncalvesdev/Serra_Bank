@@ -1,5 +1,7 @@
 package br.com.serrabank.funcionario;
 
+import java.util.Map;
+
 public class Presidente extends Funcionario {
 	private static final String CARGO = "PRESIDENTE";
 
@@ -17,8 +19,8 @@ public class Presidente extends Funcionario {
 	}
 
 	@Override
-	public void menuFuncionario() {
-//		MenuPresidente.menuPresidente();
+	public void menuFuncionario(Funcionario funcionario, Map<String, Funcionario> mapaFuncionario) {
+		// TODO Auto-generated method stub
 		
 	}
 	
