@@ -1,5 +1,6 @@
 package br.com.serrabank.login;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class Login {
 	private static final Scanner entrada = new Scanner(System.in);
     private static final PrintStream saida = System.out;
 
-	public static void loginCliente(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
+	public static void loginCliente(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
 		
 		do {
 			saida.print("Digite seu login: ");
@@ -42,7 +43,7 @@ public class Login {
 		} while (true);			 	
 	}
 	
-	public static void loginFuncionario(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) { 
+	public static void loginFuncionario(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException { 
 		Scanner in = new Scanner (System.in); 
 		do {
 		System.out.println ("Digite seu CPF:") ;

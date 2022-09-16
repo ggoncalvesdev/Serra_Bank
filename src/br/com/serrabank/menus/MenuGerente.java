@@ -1,5 +1,8 @@
 package br.com.serrabank.menus;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,7 +19,7 @@ public class MenuGerente {
 	static Scanner ler = new Scanner(System.in);
 	private static final PrintStream saida = System.out;
 		
-	public static void menuGerente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {	
+	public static void menuGerente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {	
 			int opcao;
 			
 			do {
@@ -46,10 +49,10 @@ public class MenuGerente {
 				default: 
 					System.out.println("Opção inválida!");		
 				}			
-			}while(opcao != 3);
+			}while(opcao != 4);
 		}
 		
-		public static void menuMovimentacoesEInfoConta(Funcionario funcionario, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
+		public static void menuMovimentacoesEInfoConta(Funcionario funcionario, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
 	        int opcao;
 
 	        do {
@@ -84,7 +87,7 @@ public class MenuGerente {
 	    }
 		
 
-		public static void menuRelatoriosGerente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario)	{
+		public static void menuRelatoriosGerente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException	{
 
 			int opcao;
 			
@@ -95,7 +98,8 @@ public class MenuGerente {
 	        System.out.println("1 - Saldo");
 	        System.out.println("2 - Relátorio de Tributação das Contas Corrente");
 	        System.out.println("3 - Simular Rendimento da Poupança ");
-	        System.out.println("4 - Voltar. ");
+	        System.out.println("4 - Ver quantidade de contas na agência ");
+	        System.out.println("5 - Voltar. ");
 	        System.out.println("--------------------------\n");
 	        opcao = ler.nextInt();
 			
@@ -113,6 +117,10 @@ public class MenuGerente {
 				break;
 				
 				case 4:
+					relatorioNumeroDeContas(funcionario);
+				break;
+				
+				case 5:
 					funcionario.menuFuncionario (funcionario,mapaContas, mapaFuncionario);
 				break;
 				
@@ -165,6 +173,30 @@ public class MenuGerente {
 	        	System.out.println("Não foi possivel transferir");
 	        }   
 	    }
+		
+		public static void relatorioNumeroDeContas(Funcionario funcionario) throws IOException {
+			System.out.println("Existem " + contarContasAg ((Gerente) funcionario) + " contas na sua agência.");
+		}
+		
+		public static int contarContasAg (Gerente gerente) throws IOException {
+			BufferedReader br = new BufferedReader(new FileReader(".\\arquivos\\" + "Clientes.txt"));
+			int contasAg = 0;
+			String linha = "";
+			
+			while (true)  {	     
+				linha = br.readLine();
+				
+				if(linha != null) {
+		        String[] lerlinha = linha.split(";"); 
+			        if(gerente.getAgencia() == Integer.parseInt(lerlinha[5])){
+			        	contasAg++;
+					}
+				} else 
+					break;
+			}
+		br.close();
+		return contasAg;
+		}
 
 	    public static void calculaRensdimento()	{
 	    		System.out.println("Qual valor deseja colocar na poupan�a? ");
