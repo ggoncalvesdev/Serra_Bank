@@ -18,7 +18,7 @@ public class Presidente extends Funcionario {
 
 	@Override
 	public void menuFuncionario() {
-		MenuPresidente.menuPresidente();
+//		MenuPresidente.menuPresidente();
 		
 	}
 	

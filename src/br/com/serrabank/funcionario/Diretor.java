@@ -1,7 +1,5 @@
 package br.com.serrabank.funcionario;
 
-import br.com.serrabank.menus.MenuGerente;
-
 public class Diretor extends Funcionario{
 	private static final String CARGO = "DIRETOR";
 
@@ -20,8 +18,8 @@ public class Diretor extends Funcionario{
 
 	@Override
 	public void menuFuncionario() {
-		MenuDiretor.menuDiretor();
+		// TODO Auto-generated method stub
 		
 	}
-	
+
 }
