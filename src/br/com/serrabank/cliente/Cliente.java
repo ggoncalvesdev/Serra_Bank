@@ -1,6 +1,6 @@
 package br.com.serrabank.cliente;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente> {
 	private static final String CARGO = "CLIENTE";
 	private String titular;
 	private String senha;
@@ -43,5 +43,9 @@ public class Cliente {
 	public static String getCargo() {
 		return CARGO;
 	}
-
+	
+	@Override
+	public int compareTo(Cliente o) {
+		 return this.getNome().compareTo(o.getNome());
+	}
 }
