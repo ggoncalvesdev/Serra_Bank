@@ -3,14 +3,15 @@ package br.com.serrabank.menus;
 import java.util.Map;
 import java.util.Scanner;
 
+
 import br.com.serrabank.cliente.Cliente;
-import br.com.serrabank.funcionario.Funcionario;
 
 public class MenuGerente {
 
 	static Scanner ler = new Scanner(System.in);
 		
 	public static void menuGerente(Funcionario funcionario,  Map<String, Funcionario> mapaFuncionario) {	
+
 			int opcao;
 			
 			do {
@@ -29,6 +30,7 @@ public class MenuGerente {
 				break;
 					
 				case 2: menuRelatoriosGerente(funcionario, mapaFuncionario);
+
 				break;
 				
 				case 3:
@@ -42,6 +44,7 @@ public class MenuGerente {
 		}
 		
 		public static void menuMovimentacoesEInfoConta(Funcionario funcionario,  Map<String, Funcionario> mapaFuncionario) {
+
 	        int opcao;
 
 	        do {
@@ -66,14 +69,18 @@ public class MenuGerente {
 	            case 3:
 	      //      	fucionario.tranfereciaOutraConta();
 	            break;
+
 	            case 4: funcionario.menuFuncionario(funcionario, mapaFuncionario);
+
 	            break;
 	            default:  System.out.println("Opção inválida"); 
 	            }
 	        }while(opcao != 4);
 	    }
 		
+
 		public static void menuRelatoriosGerente(Funcionario funcionario,  Map<String, Funcionario> mapaFuncionario)	{
+
 			int opcao;
 			
 			do {
@@ -104,7 +111,9 @@ public class MenuGerente {
 				break;
 				
 				case 4:
+
 					funcionario.menuFuncionario (funcionario, mapaFuncionario);
+
 				break;
 				
 				default: System.out.println("Opção inválida\n"); 
