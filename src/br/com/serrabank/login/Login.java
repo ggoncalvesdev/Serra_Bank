@@ -7,6 +7,7 @@ import java.util.Scanner;
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.enums.TipoEnum;
+import br.com.serrabank.funcionario.Funcionario;
 import br.com.serrabank.menus.MenuContaCorrente;
 import br.com.serrabank.menus.MenuContaPoupanca;
 
@@ -36,8 +37,26 @@ public class Login {
 					}
 			
 			} else {
-				System.out.println("Login ou senha inválidos.");
+				System.out.println("Login ou senha invï¿½lidos.");
 			}	
 		} while (true);			 	
+	}
+	
+	public static void loginFuncionario(Map<String, Funcionario> mapaFuncionario) { 
+		Scanner in = new Scanner (System.in); 
+		do {
+		System.out.println ("Digite seu CPF:") ;
+		String login = in.nextLine(); 
+		System.out.println ("Digete sua senha: ") ;
+		String senha = in.nextLine(); 
+		Funcionario usuarioLogado = mapaFuncionario.get(login);
+		
+		if(mapaFuncionario.containsKey(login) && senha.equals(usuarioLogado.getSenha())) { 
+			usuarioLogado.menuFuncionario(usuarioLogado, mapaFuncionario);
+			break;
+		}	else	{
+			System.out.println ("Login ou senha invÃ¡lidos! Tente novamente");
+			}
+		}while (true);
 	}
 }

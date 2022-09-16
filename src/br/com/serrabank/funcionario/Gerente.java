@@ -1,5 +1,7 @@
 package br.com.serrabank.funcionario;
 
+import java.util.Map;
+
 import br.com.serrabank.menus.MenuGerente;
 
 public class Gerente extends Funcionario {
@@ -29,8 +31,8 @@ public class Gerente extends Funcionario {
 	}
 
 	@Override
-	public void menuFuncionario() {
-		MenuGerente.menuGerente();
+	public void menuFuncionario(Funcionario funcionario, Map<String, Funcionario> mapaFuncionario) {
+		MenuGerente.menuGerente(funcionario, mapaFuncionario);
 		
 	}
 }

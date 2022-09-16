@@ -46,7 +46,7 @@ public class Leitor {
 		br.close();
 	}
 	
-	public static void criadorFuncionarios(String path) throws IOException {
+	public static void criadorFuncionarios(String path, Map<String, Funcionario> mapaFuncionario) throws IOException {
 		String linha = "";
 		BufferedReader br = new BufferedReader(new FileReader(path + "\\" + "Funcionarios.txt"));		
 		
@@ -58,13 +58,16 @@ public class Leitor {
 	  	
 		        		if(	Integer.parseInt(lerlinha[0]) == (CargoEnum.GERENTE.ordinal())	) {
 		            	Funcionario gerente = new Gerente(lerlinha[1], lerlinha[2], lerlinha[3], Integer.parseInt(lerlinha[4]));
-		            	}
+		            	mapaFuncionario.put(lerlinha[3], gerente);
+		        		}
 		        		if(	Integer.parseInt(lerlinha[0]) == (CargoEnum.DIRETOR.ordinal())	) {
 			            Funcionario diretor = new Diretor(lerlinha[1], lerlinha[2], lerlinha[3]);
-			            }
+			            mapaFuncionario.put(lerlinha[3], diretor);
+		        		}
 		        		if(	Integer.parseInt(lerlinha[0]) == (CargoEnum.PRESIDENTE.ordinal())	) {
 			            Funcionario presidente = new Presidente(lerlinha[1], lerlinha[2], lerlinha[3]);
-			            }
+			            mapaFuncionario.put(lerlinha[3], presidente);
+		        		}
 				}else 
 					break;		
 			}

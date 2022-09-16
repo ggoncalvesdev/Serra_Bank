@@ -1,5 +1,7 @@
 package br.com.serrabank.funcionario;
 
+import java.util.Map;
+
 public abstract class Funcionario {
 	private String nome;
 	private String senha;
@@ -15,7 +17,7 @@ public abstract class Funcionario {
 		this.cpf = cpf;
 	}
 	
-	public abstract void menuFuncionario();
+	public abstract void menuFuncionario(Funcionario funcionario,  Map<String, Funcionario> mapaFuncionario);
 
 	public void trocarSenha(String senha) {
 		this.senha = senha;
