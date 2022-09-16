@@ -8,44 +8,44 @@ import java.util.Scanner;
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
+import br.com.serrabank.exception.SaldoInsuficienteException;
 import br.com.serrabank.funcionario.Funcionario;
 import br.com.serrabank.funcionario.Gerente;
-import br.com.serrabank.login.Login;
 
 public class MenuContaCorrente {
 
-	static Scanner ler = new Scanner(System.in);
+	private static final Scanner entrada = new Scanner(System.in);
 	private static final PrintStream saida = System.out;
 
 	public static void menuContaCorrente(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {	
 		int opcao;
 		
 		do {
-			System.out.println("\n SERRA BANK - MENU CLIENTE ");
-			System.out.println("------------------------------------");
-			System.out.println("--- Escolha sua op��o: ---");
-			System.out.println(" 1 - Movimenta��es da conta.");
-			System.out.println(" 2 - Rel�torios.");
-			System.out.println(" 3 - Sair.\n ");
-			System.out.println("-------------------------------------\n");
-			opcao = ler.nextInt();
+			saida.println("\n SERRA BANK - MENU CLIENTE ");
+			saida.println("------------------------------------");
+			saida.println("--- Escolha sua opção: ---");
+			saida.println(" 1 - Movimentações da conta.");
+			saida.println(" 2 - Relátorios.");
+			saida.println(" 3 - Sair.\n ");
+			saida.println("-------------------------------------\n");
+			opcao = entrada.nextInt();
 			
-			switch(opcao) {
-			
-			case 1:
-				menuMovimentacoesConta(conta, mapaContas, mapaFuncionario);
-			break;
-			case 2: 
-				menuRelatoriosCliente(conta, mapaContas, mapaFuncionario);
-			break;
-			case 3:
-				MenuInicial.menuInicial(mapaContas, mapaFuncionario);
-				System.out.println("Voc� est� saindo do Sistema. Adeus");
-			break;
-			
-			default: 
-				System.out.println("Op��o inv�lida!");		
-			}			
+				switch(opcao) {
+				
+					case 1:
+						menuMovimentacoesConta(conta, mapaContas, mapaFuncionario);
+					break;
+					case 2: 
+						menuRelatoriosCliente(conta, mapaContas, mapaFuncionario);
+					break;
+					case 3:
+						MenuInicial.menuInicial(mapaContas, mapaFuncionario);
+						saida.println("Você está saindo do Sistema. Adeus");
+					break;
+					default: 
+						saida.println("Opção inválida!");		
+				}	
+				
 		}while(opcao != 3);
 	}
 	
@@ -53,32 +53,33 @@ public class MenuContaCorrente {
         int opcao;
 
         do {
-            System.out.println("\nSERRA BANK - MENU CLIENTE - MOV CONTA");
-            System.out.println("-------------------------------------------------------");
-            System.out.println("----------------- Escolha sua op��o: ------------------");
-            System.out.println(" 1 - Saque.");
-            System.out.println(" 2 - Deposito.");
-            System.out.println(" 3 - Transferencia para outra conta.");
-            System.out.println(" 4 - Voltar para Menu Cliente.\n");
-            System.out.println("-------------------------------------------------------");
-            
-            opcao = ler.nextInt();
+            saida.println("\nSERRA BANK - MENU CLIENTE - MOV CONTA");
+            saida.println("-------------------------------------------------------");
+            saida.println("----------------- Escolha sua opção: ------------------");
+            saida.println(" 1 - Saque.");
+            saida.println(" 2 - Deposito.");
+            saida.println(" 3 - Transferencia para outra conta.");
+            saida.println(" 4 - Voltar para Menu Cliente.\n");
+            saida.println("-------------------------------------------------------");
+            opcao = entrada.nextInt();
 
-            switch(opcao) {
-            case 1:
-            	saque(conta, mapaContas);
-            break;
-            case 2:
-				deposito(conta, mapaContas);
-            break;
-            case 3:
-            	transferencia(conta, mapaContas, mapaFuncionario);
-            break;
-            case 4: 
-            	menuContaCorrente(conta, mapaContas, mapaFuncionario);
-            break;
-            default:  System.out.println("Op��o inv�lida"); 
-            }
+	            switch(opcao) {
+	            case 1:
+	            	saque(conta, mapaContas);
+	            break;
+	            case 2:
+					deposito(conta, mapaContas);
+	            break;
+	            case 3:
+	            	transferencia(conta, mapaContas, mapaFuncionario);
+	            break;
+	            case 4: 
+	            	menuContaCorrente(conta, mapaContas, mapaFuncionario);
+	            break;
+	            default:
+	            	saida.println("Opção inválida"); 
+	            }
+	            
         }while(opcao != 4);
     }
 	
@@ -86,81 +87,99 @@ public class MenuContaCorrente {
 		int opcao;
 		
 		do {
-		System.out.println("\nSERRA BANK - MENU CLIENTE - RELAT�RIOS");
-        System.out.println("--------------------------");
-        System.out.println("--- Escolha sua op��o: ---");
-        System.out.println("1 - Saldo");
-        System.out.println("2 - Rel�torio de Tributa��o das Contas Corrente");
-        System.out.println("3 - Voltar. ");
-        System.out.println("--------------------------\n");
-        opcao = ler.nextInt();
+			saida.println("\nSERRA BANK - MENU CLIENTE - RELATÓRIOS");
+	        saida.println("--------------------------");
+	        saida.println("--- Escolha sua opãoo: ---");
+	        saida.println("1 - Saldo");
+	        saida.println("2 - Relátorio de Tributação das Contas Corrente");
+	        saida.println("3 - Voltar. ");
+	        saida.println("--------------------------\n");
+	        opcao = entrada.nextInt();
 		
-	        switch (opcao)	{
-			case 1:
-				saldo(conta,mapaContas);
-			break;
-			case 2:
-				relatorioTributacao(conta,mapaContas);
-			break;
-			case 3:
-				menuContaCorrente(conta, mapaContas, mapaFuncionario);				
-			break;
-			default: System.out.println("Op��o inv�lida\n"); 
-			}
+		        switch (opcao)	{
+				case 1:
+					saldo(conta,mapaContas);
+				break;
+				case 2:
+					relatorioTributacao(conta,mapaContas);
+				break;
+				case 3:
+					menuContaCorrente(conta, mapaContas, mapaFuncionario);				
+				break;
+				default: System.out.println("Opção inválida\n"); 
+				}
+		        
 		}while(opcao != 3);
 	}
 	
 	private static void deposito(Conta conta,  Map<String, Cliente> mapaContas) {
         saida.println("Quanto deseja depositar? \n");
-        double valor = ler.nextDouble();
-        
-        	conta.depositar(valor);
-        	System.out.println("Deposito feito com sucesso");
+        double valor = entrada.nextDouble();
+        	
+        	try {
+        		conta.depositar(valor);
+        		saida.println("Deposito feito com sucesso");
+				
+			} catch (IllegalArgumentException e) {
+				saida.println("Você executou uma operação ilegal: " + e.getMessage());
+		}
     }
 
     private static void saque(Conta conta,  Map<String, Cliente> mapaContas) {
-    	
         saida.println("Quanto deseja Sacar? \n");
-        double valor = ler.nextDouble();
+        double valor = entrada.nextDouble();
       
-        if(conta.getSaldo() < valor) {
-        	System.out.println("Valor Insuficiente\nSeu saldo �:" + conta.getSaldo());
-        } else {
-        	conta.sacar(valor);
-        }
+        	try {
+        		conta.sacar(valor);	
+    			saida.println("Saque feito com sucesso");
+    			
+        	} catch(IllegalArgumentException e){
+        		saida.println("Você executou uma operação ilegal: " + e.getMessage());
+        	} catch (SaldoInsuficienteException e) {
+				saida.println("Seu saldo é insuficiente para essa operação\n" + e.getMessage());
+		}
     }
 
 	private static void saldo(Conta conta,  Map<String, Cliente> mapaContas) {
-        saida.print("\nSeu saldo �: " + conta.getSaldo() + "\n");
+        saida.print("\nSeu saldo é: " + conta.getSaldo() + "\n");
     }
 
-    
 	private static void transferencia(Conta conta,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
-		
-        saida.print("Digite o cpf do titular que deseja transferir: \n");
-        String cpf = ler.next();
+		saida.print("Digite o cpf do titular que deseja transferir: \n");
+        String cpf = entrada.next();
         saida.print("Quanto deseja transferir?  \n");
-        double valor = ler.nextDouble();   
-        Gerente destino1 = null;
-        Conta destino2 = null;
-        
-        if(mapaFuncionario.containsKey(cpf) == true) {
-        	destino1 = ((Gerente)mapaFuncionario.get(cpf));
-        	((ContaCorrente)conta).transfereGerente(destino1, valor);
-        	
-        }else if(mapaContas.containsKey(cpf) == true) {
-        	destino2 = ((Conta)mapaContas.get(cpf));
-        	conta.transfere(destino2, valor);;
-		}else {
-        	System.out.println("Não foi possivel transferir");
-        }   
+        double valor = entrada.nextDouble();   
+	       
+        	Gerente destino1 = null;
+	        Conta destino2 = null;
+	        
+	        	try {	
+	        		if(mapaFuncionario.containsKey(cpf) == true) {
+	        			destino1 = ((Gerente)mapaFuncionario.get(cpf));
+	        			((ContaCorrente)conta).transfereGerente(destino1, valor);
+	        			saida.println("Transferencia feita com sucesso");
+	        			
+		        		}else if(mapaContas.containsKey(cpf) == true) {
+		        			destino2 = ((Conta)mapaContas.get(cpf));
+		        			conta.transfere(destino2, valor);;
+		        			saida.println("Transferencia feita com sucesso");
+		        			
+		        		}else {
+		        			saida.println("Não foi possivel transferir");
+		        		}   
+	        	
+	        	} catch(IllegalArgumentException e){
+	        		saida.println("Você executou uma operação ilegal: " + e.getMessage());
+				} catch (SaldoInsuficienteException e) {
+					saida.println("Seu saldo é insuficiente para essa operação\n" + e.getMessage());
+			}
     }
     
     public static void relatorioTributacao(Conta conta,  Map<String, Cliente> mapaContas) {
-    	System.out.println("O valores cobrados por opera��o banc�ria s�o respectivamente:");
-		System.out.println("R$ 0,10 (dez centavos) para saques,");
-		System.out.println("R$ 0,10 (dez centavos) para dep�sitos,");
-		System.out.println("e R$ 0,20 (vinte centavos) para transfer�ncias.\n");
-    	System.out.println("Gastos totais nas opera��es: " + ((ContaCorrente) conta).getTributacao());
+    	saida.println("O valores cobrados por operação bancária são respectivamente:");
+		saida.println("R$ 0,10 (dez centavos) para saques,");
+		saida.println("R$ 0,10 (dez centavos) para depósitos,");
+		saida.println("e R$ 0,20 (vinte centavos) para transfer�ncias.\n");
+    	saida.println("Gastos totais nas operações: " + ((ContaCorrente) conta).getTributacao());
     }
 }

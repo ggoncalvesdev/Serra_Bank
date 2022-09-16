@@ -6,7 +6,6 @@ public abstract class Conta extends Cliente {
 	
 	private static final String TIPO = "";
 	
-	
 	protected int agencia;
 	protected double saldo;
 	private static int numeroDeContasCadastradas = 0;
@@ -19,8 +18,7 @@ public abstract class Conta extends Cliente {
 		super(cliente.getNome(), cliente.getSenha(), cliente.getCpf());
 		this.saldo = this.saldo + saldo;
 		this.agencia = agencia;
-		numeroDeContasCadastradas ++;
-		
+		numeroDeContasCadastradas ++;	
 	}
 	
 	public Conta(int agencia) {
@@ -29,24 +27,11 @@ public abstract class Conta extends Cliente {
 		numeroDeContasCadastradas ++;
 	}
 		
-	public void sacar(double valor) {
-            this.saldo -= valor;
-	}
+	public abstract void sacar(double valor);
 	
-	public void depositar(double deposito) {
-    		this.saldo = this.saldo + deposito;
-	}
+	public abstract void depositar(double deposito);
 	
-	 public void transfere(Conta destino, double valor) {
-		
-	    	if(this.saldo < valor) {	
-	    	 System.out.println("Saldo insuficiente"); 		
-	    	 
-	    	} else {
-	    		this.saldo = this.saldo - valor;
-	    		destino.saldo = destino.saldo + valor;
-	    }
-    }
+	public abstract void transfere(Conta destino, double valor);
 	
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;

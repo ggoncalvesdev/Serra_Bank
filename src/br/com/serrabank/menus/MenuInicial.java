@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.funcionario.Funcionario;
+import br.com.serrabank.io.Leitor;
 import br.com.serrabank.login.Login;
 
 public class MenuInicial {
@@ -17,7 +18,8 @@ public class MenuInicial {
 		
 		do {
 		
-			System.out.println("\n\t SERRA BANK - LOGIN \n");
+		      Leitor.leitorBanner("C:/Users/User/Desktop/api-delivery/api-delivery/Serra-Bank/Serra_Bank/arquivos/banner.txt");
+
 			System.out.println("----------------------------------------------");
 			System.out.println("--- Você é cliente ou Funcionario? ---\n");
 			System.out.println("1 - Sou Cliente.");

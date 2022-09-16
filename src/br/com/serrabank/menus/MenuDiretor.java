@@ -2,64 +2,69 @@ package br.com.serrabank.menus;
 
 
 
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.funcionario.Funcionario;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
 
-
-
-public class MenuDiretor extends MenuGerente{
+public class MenuDiretor extends MenuGerente {
 	
-public static void menuDiretor(Funcionario funcionario, Map<String, Cliente> mapaContas,Map<String, Funcionario> mapaFuncionario)  {
+	private static final Scanner entrada = new Scanner(System.in);
+	private static final PrintStream saida = System.out;
+	
+	public static void menuDiretor(Funcionario funcionario, Map<String, Cliente> mapaContas,Map<String, Funcionario> mapaFuncionario) throws IOException  {
 		
 		int opcao;
 		
 		do {
-			System.out.println("\n\t SERRA BANK - MENU DIRETOR ");
-			System.out.println("-----------------------------------------");
-			System.out.println("--- Escolha sua opção: ---");
-			System.out.println(" 1 - Relátorios.");
-			System.out.println(" 2 - Sair.\n ");
-			System.out.println("-----------------------------------------\n");
+			saida.println("\n\t SERRA BANK - MENU DIRETOR ");
+			saida.println("-----------------------------------------");
+			saida.println("--- Escolha sua opção: ---");
+			saida.println(" 1 - Relátorios.");
+			saida.println(" 2 - Sair.\n ");
+			saida.println("-----------------------------------------\n");
 			opcao = ler.nextInt();
 			
 			switch(opcao) {
 			
-			case 1: menuRelatoriosDiretor(funcionario, mapaContas, mapaFuncionario);
+			case 1: 
+				menuRelatoriosDiretor(funcionario, mapaContas, mapaFuncionario);
 			break;
 			
 			case 2:
-				System.out.println("Você está saindo do Sistema. Adeus");
+				saida.println("Você está saindo do Sistema. Adeus");
 			break;
 			
 			default: 
-				System.out.println("Opção inválida!");		
+				saida.println("Opção inválida!");		
 			}			
 		}while(opcao != 3);
 	}
 
-	public static void menuRelatoriosDiretor(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) 	{
+	public static void menuRelatoriosDiretor(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException 	{
 
 		int opcao;
 		
 		do {
-		System.out.println("\n\tSERRA BANK - MENU DIRETOR - RELATÓRIOS");
-        System.out.println("--------------------------------------------------------");
-        System.out.println("--- Escolha sua opção: ---");
-        System.out.println(" 1 - Saldo");
-        System.out.println(" 2 - Relátorio de Tributação das Contas Corrente");
-        System.out.println(" 3 - Simular Rendimento da Poupança ");
-        System.out.println(" 4 - Relatório de número de contas por agência. ");
-        System.out.println(" 5 - Relatório de contas ordenado. ");
-        System.out.println(" 6 - Voltar. ");
-        System.out.println("--------------------------------------------------------\n");
+		saida.println("\n\tSERRA BANK - MENU DIRETOR - RELATÓRIOS");
+        saida.println("--------------------------------------------------------");
+        saida.println("--- Escolha sua opção: ---");
+        saida.println(" 1 - Saldo");
+        saida.println(" 2 - Relátorio de Tributação das Contas Corrente");
+        saida.println(" 3 - Simular Rendimento da Poupança ");
+        saida.println(" 4 - Relatório de número de contas por agência. ");
+        saida.println(" 5 - Relatório de contas ordenado. ");
+        saida.println(" 6 - Voltar. ");
+        saida.println("--------------------------------------------------------\n");
         opcao = ler.nextInt();
 		
 	        switch (opcao)	{
@@ -72,7 +77,7 @@ public static void menuDiretor(Funcionario funcionario, Map<String, Cliente> map
 			break;
 			
 			case 3:
-				calculaRendimento();
+				calculaRensdimento();
 			break;
 			
 			case 4:
@@ -87,7 +92,8 @@ public static void menuDiretor(Funcionario funcionario, Map<String, Cliente> map
 				funcionario.menuFuncionario (funcionario,mapaContas, mapaFuncionario);
 			break;
 			
-			default: System.out.println("Opção inválida\n"); 
+			default: 
+				saida.println("Opção inválida\n"); 
 			}
 		}while(opcao != 4);
 	}
@@ -99,11 +105,11 @@ public static void menuDiretor(Funcionario funcionario, Map<String, Cliente> map
     public static void relatorioTributacaoContaCorrente(Conta conta,  Map<String, Cliente> mapaContas) {
 	   
 	   	
-	   	System.out.println("Gastos totais nas opera��es: " + ((ContaCorrente) conta).getTributacao());
-	   	System.out.println("O valores cobrados por operação bancária são respectivamente:");
-		System.out.println("R$ 0,10 (dez centavos) para saques,");
-		System.out.println("R$ 0,10 (dez centavos) para depósitos,");
-		System.out.println("e R$ 0,20 (vinte centavos) para trnasferências.\n");
+	   	saida.println("Gastos totais nas opera��es: " + ((ContaCorrente) conta).getTributacao());
+	   	saida.println("O valores cobrados por operação bancária são respectivamente:");
+		saida.println("R$ 0,10 (dez centavos) para saques,");
+		saida.println("R$ 0,10 (dez centavos) para depósitos,");
+		saida.println("e R$ 0,20 (vinte centavos) para trnasferências.\n");
 	   	
 	    }
     
@@ -114,16 +120,9 @@ public static void menuDiretor(Funcionario funcionario, Map<String, Cliente> map
     }
 	    public static void relatorioInfoClientesOrdenado(Map<String, Cliente> mapaContas)   {
 	    	
-	    	List<Cliente> listaContas = new ArrayList(mapaContas.values());
+	    	List<Cliente> listaContas = new ArrayList<Cliente>(mapaContas.values());
 
 	        Collections.sort(listaContas);
-	        System.out.println(listaContas);
-	    	
-	    	
-	    
-	   
-	    		
-	    }
-	     
-	    
+	        saida.println(listaContas);   		
+	}    
 }

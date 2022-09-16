@@ -23,6 +23,7 @@ public class Gerente extends Funcionario {
 		setSaldo(saldo);
 		this.agencia = agencia;
 	}
+	
 	public void sacar(double valor) {
 		this.saldo -= 0.10;
 		tributacao += tributacao + 0.10;
@@ -43,10 +44,10 @@ public class Gerente extends Funcionario {
     	} else {
     		tributacao += 0.20;
     		this.saldo -= 0.20;
-    		this.saldo = this.saldo - valor;
-    		destino.setSaldo(destino.getSaldo() + valor);
-    }
-}
+	    		this.saldo = this.saldo - valor;
+	    		destino.setSaldo(destino.getSaldo() + valor);
+	    }
+	}
  	
  	public void transfereGerente(Gerente destino, double valor) {
     	if(this.saldo < valor) {	
@@ -55,8 +56,8 @@ public class Gerente extends Funcionario {
     	} else {
     		tributacao += 0.20;
     		this.saldo -= 0.20;
-    		this.saldo = this.saldo - valor;
-    		destino.setSaldo(destino.getSaldo()+valor);
+	    		this.saldo = this.saldo - valor;
+	    		destino.setSaldo(destino.getSaldo()+valor);
     	}
  	}
 

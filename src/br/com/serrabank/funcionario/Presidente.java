@@ -24,5 +24,4 @@ public class Presidente extends Funcionario {
 	public void menuFuncionario(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
 		
 	}
-	
 }

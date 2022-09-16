@@ -1,6 +1,7 @@
 package br.com.serrabank.menus;
 	
-	import java.util.ArrayList;
+	import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,7 @@ import br.com.serrabank.funcionario.Funcionario;
 
 public class MenuPresidente extends MenuDiretor{
 		
-	public static void menuPresidente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
+	public static void menuPresidente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
 			int opcao;
 			
 			do {
@@ -39,7 +40,7 @@ public class MenuPresidente extends MenuDiretor{
 			}while(opcao != 3);
 		}
 
-		public static void menuRelatoriosPresidente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario)	{
+		public static void menuRelatoriosPresidente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException	{
 
 			int opcao;
 			
@@ -109,7 +110,7 @@ public class MenuPresidente extends MenuDiretor{
 		    }
 			    public static void relatorioInfoClientesOrdenado(Map<String, Cliente> mapaContas)   {
 			    	
-			    	List<Cliente> listaContas = new ArrayList(mapaContas.values());
+			    	List<Cliente> listaContas = new ArrayList<Cliente>(mapaContas.values());
 
 			        Collections.sort(listaContas);
 			        System.out.println(listaContas);
@@ -118,6 +119,6 @@ public class MenuPresidente extends MenuDiretor{
 			      		
 			    }
 			public static void relatorioCapitalTotalBanco() {     
-			    
+			}
 }
 	

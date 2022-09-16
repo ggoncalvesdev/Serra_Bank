@@ -7,10 +7,8 @@ import java.io.PrintStream;
 import java.util.Map;
 import java.util.Scanner;
 
-
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
-import br.com.serrabank.conta.conta_corrente.ContaCorrente;
 import br.com.serrabank.funcionario.Funcionario;
 import br.com.serrabank.funcionario.Gerente;
 

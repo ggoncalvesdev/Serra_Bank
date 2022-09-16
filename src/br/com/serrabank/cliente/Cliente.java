@@ -15,7 +15,6 @@ public class Cliente implements Comparable<Cliente> {
 		this.cpf = cpf;
 	}
 	
-
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}

@@ -3,7 +3,6 @@ package br.com.serrabank.io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
 import br.com.serrabank.cliente.Cliente;
@@ -17,11 +16,8 @@ import br.com.serrabank.funcionario.Gerente;
 import br.com.serrabank.funcionario.Presidente;
 
 public class Leitor {
-
-//	public static Map<String, Cliente> mapaContas = new HashMap<>();
 	
 	public static void criadorContas(String path, Map<String, Cliente> mapaContas) throws IOException {
-//		String path = ".\\arquivos";
 		String linha = "";
 	
 		BufferedReader br = new BufferedReader(new FileReader(path + "\\" + "Clientes.txt"));		
@@ -73,4 +69,19 @@ public class Leitor {
 			}
 		br.close();
 	}
-}
+	
+	public static void leitorBanner(String path) throws IOException {
+		String linha = "";
+		BufferedReader buffRead = new BufferedReader(new FileReader(path));
+		
+			while (true) {
+				if (linha != null) {
+					System.out.println(linha);
+	
+				} else
+					break;
+				linha = buffRead.readLine();
+			}
+			buffRead.close();
+		}
+	}

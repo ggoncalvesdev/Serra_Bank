@@ -7,26 +7,26 @@ import java.util.Scanner;
 
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
+import br.com.serrabank.exception.SaldoInsuficienteException;
 import br.com.serrabank.funcionario.Funcionario;
-import br.com.serrabank.login.Login;
 
 public class MenuContaPoupanca {
 
-	static Scanner ler = new Scanner(System.in);
+	private static final Scanner entrada = new Scanner(System.in);
 	private static final PrintStream saida = System.out;
 
 	public static void menuContaPoupanca(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {	
 		int opcao;
 		
 		do {
-			System.out.println("\n SERRA BANK - MENU CLIENTE ");
-			System.out.println("------------------------------------");
-			System.out.println("--- Escolha sua op��o: ---");
-			System.out.println(" 1 - Movimenta��es da conta.");
-			System.out.println(" 2 - Rel�torios.");
-			System.out.println(" 3 - Sair.\n ");
-			System.out.println("-------------------------------------\n");
-			opcao = ler.nextInt();
+			saida.println("\n SERRA BANK - MENU CLIENTE ");
+			saida.println("------------------------------------");
+			saida.println("--- Escolha sua opção: ---");
+			saida.println(" 1 - Movimentações da conta.");
+			saida.println(" 2 - Relátorios.");
+			saida.println(" 3 - Sair.\n ");
+			saida.println("-------------------------------------\n");
+			opcao = entrada.nextInt();
 			
 			switch(opcao) {
 			
@@ -38,11 +38,11 @@ public class MenuContaPoupanca {
 			break;
 			case 3:
 				MenuInicial.menuInicial(mapaContas, mapaFuncionario);
-				System.out.println("Voc� est� saindo do Sistema. Adeus");
+				saida.println("Voc� est� saindo do Sistema. Adeus");
 			break;
 			
 			default: 
-				System.out.println("Op��o inv�lida!");		
+				saida.println("Opção inválida!");		
 			}			
 		}while(opcao != 3);
 	}
@@ -51,16 +51,16 @@ public class MenuContaPoupanca {
         int opcao;
 
         do {
-            System.out.println("\nSERRA BANK - MENU CLIENTE - MOV CONTA");
-            System.out.println("-------------------------------------------------------");
-            System.out.println("----------------- Escolha sua op��o: ------------------");
-            System.out.println(" 1 - Saque.");
-            System.out.println(" 2 - Deposito.");
-            System.out.println(" 3 - Transferencia para outra conta.");
-            System.out.println(" 4 - Voltar para Menu Cliente.\n");
-            System.out.println("-------------------------------------------------------");
+            saida.println("\nSERRA BANK - MENU CLIENTE - MOV CONTA");
+            saida.println("-------------------------------------------------------");
+            saida.println("----------------- Escolha sua opção: ------------------");
+            saida.println(" 1 - Saque.");
+            saida.println(" 2 - Deposito.");
+            saida.println(" 3 - Transferencia para outra conta.");
+            saida.println(" 4 - Voltar para Menu Cliente.\n");
+            saida.println("-------------------------------------------------------");
             
-            opcao = ler.nextInt();
+            opcao = entrada.nextInt();
 
             switch(opcao) {
             case 1:
@@ -75,7 +75,8 @@ public class MenuContaPoupanca {
             case 4: 
             	menuContaPoupanca(conta, mapaContas, mapaFuncionario);
             break;
-            default:  System.out.println("Op��o inv�lida"); 
+            default:  
+            	saida.println("Op��o inv�lida"); 
             }
         }while(opcao != 4);
     }
@@ -84,14 +85,14 @@ public class MenuContaPoupanca {
 		int opcao;
 		
 		do {
-		System.out.println("\nSERRA BANK - MENU CLIENTE - RELAT�RIOS");
-        System.out.println("--------------------------");
-        System.out.println("--- Escolha sua op��o: ---");
-        System.out.println("1 - Saldo");
-        System.out.println("2 - Simular Rendimento da Poupan�a ");
-        System.out.println("3 - Voltar. ");
-        System.out.println("--------------------------\n");
-        opcao = ler.nextInt();
+			saida.println("\nSERRA BANK - MENU CLIENTE - RELATÓRIOS");
+	        saida.println("--------------------------");
+	        saida.println("--- Escolha sua opção: ---");
+	        saida.println("1 - Saldo");
+	        saida.println("2 - Simular Rendimento da Poupança ");
+	        saida.println("3 - Voltar. ");
+	        saida.println("--------------------------\n");
+	        opcao = entrada.nextInt();
 		
 	        switch (opcao)	{
 			case 1:
@@ -103,58 +104,73 @@ public class MenuContaPoupanca {
 			case 3:
 				menuContaPoupanca(conta, mapaContas, mapaFuncionario);				
 			break;
-			default: System.out.println("Op��o inv�lida\n"); 
+			default: 
+				saida.println("Opção inválida\n"); 
 			}
 		}while(opcao != 3);
 	}
 	
 	private static void deposito(Conta conta,  Map<String, Cliente> mapaContas) {
         saida.println("Quanto deseja depositar? \n");
-        double valor = ler.nextDouble();
+        double valor = entrada.nextDouble();
         
-        	conta.depositar(valor);
-        	System.out.println("Deposito feito com sucesso");
+	        try {
+	    		conta.depositar(valor);
+	    		saida.println("Deposito feito com sucesso");
+				
+			} catch (IllegalArgumentException e) {
+				saida.println("Você executou uma operação ilegal: " + e.getMessage());
+		}
     }
 
     private static void saque(Conta conta,  Map<String, Cliente> mapaContas) {
-    	
         saida.println("Quanto deseja Sacar? \n");
-        double valor = ler.nextDouble();
+        double valor = entrada.nextDouble();
       
-        if(conta.getSaldo() < valor) {
-        	System.out.println("Valor Insuficiente\nSeu saldo �:" + conta.getSaldo());
-        } else {
-        	conta.sacar(valor);
-        }
+	        try {
+	    		conta.sacar(valor);	
+				saida.println("Saque feito com sucesso");
+				
+	        } catch(IllegalArgumentException e){
+        		saida.println("Você executou uma operação ilegal: " + e.getMessage());	
+	    	} catch (SaldoInsuficienteException e) {
+				saida.println("Seu saldo é insuficiente para essa operação\n" + e.getMessage());
+	    	}
     }
 
-	private static void saldo(Conta conta,  Map<String, Cliente> mapaContas) {
-        saida.print("\nSeu saldo �: " + conta.getSaldo() + "\n");
+    private static void saldo(Conta conta,  Map<String, Cliente> mapaContas) {
+        saida.print("\nSeu saldo é: " + conta.getSaldo() + "\n");
     }
 
-    
 	private static void transferencia(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
-		
-        saida.print("Digite a chave do titular que deseja transferir: \n");
-        String cpf = ler.next();
+		saida.print("Digite o cpf do titular que deseja transferir: \n");
+        String cpf = entrada.next();
         saida.print("Quanto deseja transferir?  \n");
-        double valor = ler.nextDouble();
-      
-        if(mapaContas.containsKey(cpf) == true) {     	
-        	conta.transfere((Conta) mapaContas.get(cpf), valor);
-        } else {
-        	System.out.println("n�o foi possivel transferir");
-        }   
-    }
+        double valor = entrada.nextDouble();
+        
+        	try {
+        		if(mapaContas.containsKey(cpf) == true) {     	
+        			conta.transfere((Conta) mapaContas.get(cpf), valor);
+        			saida.println("Transferencia feita com sucesso");
+
+        		} else {
+        			System.out.println("não foi possivel transferir");
+        		}  
+        		
+        	} catch(IllegalArgumentException e){
+        		saida.println("Você executou uma operação ilegal: " + e.getMessage());	
+			} catch (SaldoInsuficienteException e) {
+				saida.println("Seu saldo é insuficiente para essa operação\n" + e.getMessage());
+		}
+	}
 
     public static void calculaRensdimento()	{
-    		System.out.println("Qual valor deseja colocar na poupan�a? ");
-    		double dinheiro = ler.nextDouble();
-    		System.out.println("E por quanto tempo deseja deixar ele render? ");
-    		int dias = ler.nextInt();
+    	saida.println("Qual valor deseja colocar na poupança? ");
+    	double dinheiro = entrada.nextDouble();
+    	saida.println("E por quanto tempo deseja deixar ele render? ");
+    	int dias = entrada.nextInt();
     		
-    		double rendimento = (dinheiro*0.05)*dias;
-    		System.out.println("\nO valor escolhido pelo cliente render� R$" + rendimento + " em " + dias + " dias.\n");
-    	}
-
+    	double rendimento = (dinheiro*0.05)*dias;
+    	saida.println("\nO valor escolhido pelo cliente renderá R$" + rendimento + " em " + dias + " dias.\n");
+    }
 }
