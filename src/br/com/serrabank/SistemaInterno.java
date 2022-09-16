@@ -11,10 +11,10 @@ import br.com.serrabank.login.Login;
 import br.com.serrabank.menus.MenuInicial;
 
 public class SistemaInterno {
-	
-	public static void main(String[] args) throws IOException {
+		public static void main(String[] args) throws IOException {
 		Map<String, Cliente> mapaContas = new HashMap<>();
 		Map<String, Funcionario> mapaFuncionario = new HashMap<>(); 
+	
 		
 		String path = ".\\arquivos";
 		

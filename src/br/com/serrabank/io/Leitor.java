@@ -57,7 +57,7 @@ public class Leitor {
 		        String[] lerlinha = linha.split(";");
 	  	
 		        		if(	Integer.parseInt(lerlinha[0]) == (CargoEnum.GERENTE.ordinal())	) {
-		            	Funcionario gerente = new Gerente(lerlinha[1], lerlinha[2], lerlinha[3], Integer.parseInt(lerlinha[4]));
+		            	Funcionario gerente = new Gerente(lerlinha[1], lerlinha[2], lerlinha[3], Double.parseDouble(lerlinha[4]),Integer.parseInt(lerlinha[5]));
 		            	mapaFuncionario.put(lerlinha[3], gerente);
 		        		}
 		        		if(	Integer.parseInt(lerlinha[0]) == (CargoEnum.DIRETOR.ordinal())	) {
