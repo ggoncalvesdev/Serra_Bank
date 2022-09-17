@@ -5,14 +5,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-	import br.com.serrabank.cliente.Cliente;
+import java.util.Scanner;
+
+import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
 import br.com.serrabank.funcionario.Funcionario;
 
 
 public class MenuPresidente extends MenuDiretor{
-		
+	private static final Scanner entrada = new Scanner(System.in);
+	
 	public static void menuPresidente(Funcionario funcionario,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
 			int opcao;
 			
@@ -23,7 +26,7 @@ public class MenuPresidente extends MenuDiretor{
 				System.out.println(" 1 - Relátorios.");
 				System.out.println(" 2 - Sair.\n ");
 				System.out.println("-----------------------------------------\n");
-				opcao = ler.nextInt();
+				opcao = entrada.nextInt();
 				
 				switch(opcao) {
 				
@@ -56,7 +59,7 @@ public class MenuPresidente extends MenuDiretor{
 	        System.out.println(" 6 - Relatório valor total armazenado no Banco  ");
 	        System.out.println(" 7 - Voltar. ");
 	        System.out.println("--------------------------------------------------------\n");
-	        opcao = ler.nextInt();
+	        opcao = entrada.nextInt();
 			
 		        switch (opcao)	{
 				case 1:
