@@ -14,6 +14,7 @@ import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.funcionario.Funcionario;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
+import br.com.serrabank.escritores.EscritorRelatorio;
 
 public class MenuDiretor extends MenuGerente {
 	
@@ -64,6 +65,7 @@ public class MenuDiretor extends MenuGerente {
 	        opcao = entrada.nextInt();
 		
 	        switch (opcao)	{
+<<<<<<< HEAD
 				case 1:
 					relatorioSaldoAgencia(funcionario);
 				break;
@@ -82,6 +84,34 @@ public class MenuDiretor extends MenuGerente {
 				case 6:
 					funcionario.menuFuncionario (funcionario,mapaContas, mapaFuncionario);
 				break;
+=======
+
+			case 1:
+				relatorioSaldoAgencia(funcionario);
+			break;
+			
+			case 2:
+				relatorioTributacaoDiretor(funcionario,mapaFuncionario);
+			break;
+			
+			case 3:
+				calculaRensdimento();
+			break;
+			
+			case 4:
+				relatorioNumeroDeContasDiretor(funcionario);
+			break;
+			
+			case 5:
+				relatorioInfoClientesOrdenado(mapaContas);
+			break;
+			
+			case 6:
+				funcionario.menuFuncionario (funcionario,mapaContas, mapaFuncionario);
+			break;
+			
+
+>>>>>>> c9b7ca560e8d5c2acaf3a65057f3f6f2bd0c2d0d
 			default: 
 				saida.println("Opção inválida\n"); 
 			}
@@ -137,6 +167,7 @@ public class MenuDiretor extends MenuGerente {
 	
 	}
 	
+<<<<<<< HEAD
     public static void relatorioTributacaoContaCorrente(Conta conta,  Map<String, Cliente> mapaContas) {
 	   	saida.println("Gastos totais nas operações: " + ((ContaCorrente) conta).getTributacao());
 	   	saida.println("O valores cobrados por operação bancária são respectivamente:");
@@ -144,6 +175,13 @@ public class MenuDiretor extends MenuGerente {
 		saida.println("R$ 0,10 (dez centavos) para depósitos,");
 		saida.println("e R$ 0,20 (vinte centavos) para trnasferências.\n");
 	   	
+=======
+	public static void relatorioTributacaoDiretor(Funcionario funcionario,  Map<String, Funcionario> mapaFuncionario) {
+    	System.out.println("O valores cobrados por opera��o banc�ria s�o respectivamente:");
+		System.out.println("R$ 0,10 (dez centavos) para saques,");
+		System.out.println("R$ 0,10 (dez centavos) para dep�sitos,");
+		System.out.println("e R$ 0,20 (vinte centavos) para transfer�ncias.\n");
+>>>>>>> c9b7ca560e8d5c2acaf3a65057f3f6f2bd0c2d0d
 	}
     
     public static void relatorioNumeroDeContasDiretor(Funcionario funcionario) throws IOException {

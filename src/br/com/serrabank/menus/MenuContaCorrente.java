@@ -8,6 +8,7 @@ import java.util.Scanner;
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
+import br.com.serrabank.escritores.EscritorRelatorio;
 import br.com.serrabank.exception.SaldoInsuficienteException;
 import br.com.serrabank.funcionario.Funcionario;
 import br.com.serrabank.funcionario.Gerente;
@@ -112,7 +113,7 @@ public class MenuContaCorrente {
 		}while(opcao != 3);
 	}
 	
-	private static void deposito(Conta conta,  Map<String, Cliente> mapaContas) {
+	private static void deposito(Conta conta,  Map<String, Cliente> mapaContas) throws IOException {
         saida.println("Quanto deseja depositar? \n");
         double valor = entrada.nextDouble();
         	
@@ -125,7 +126,7 @@ public class MenuContaCorrente {
 		}
     }
 
-    private static void saque(Conta conta,  Map<String, Cliente> mapaContas) {
+    private static void saque(Conta conta,  Map<String, Cliente> mapaContas) throws IOException {
         saida.println("Quanto deseja Sacar? \n");
         double valor = entrada.nextDouble();
       
@@ -142,9 +143,10 @@ public class MenuContaCorrente {
 
 	private static void saldo(Conta conta,  Map<String, Cliente> mapaContas) {
         saida.print("\nSeu saldo é: " + conta.getSaldo() + "\n");
+        
     }
 
-	private static void transferencia(Conta conta,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
+	private static void transferencia(Conta conta,Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
 		saida.print("Digite o cpf do titular que deseja transferir: \n");
         String cpf = entrada.next();
         saida.print("Quanto deseja transferir?  \n");
@@ -175,11 +177,12 @@ public class MenuContaCorrente {
 			}
     }
     
-    public static void relatorioTributacao(Conta conta,  Map<String, Cliente> mapaContas) {
+    public static void relatorioTributacao(Conta conta,  Map<String, Cliente> mapaContas) throws IOException {
     	saida.println("O valores cobrados por operação bancária são respectivamente:");
 		saida.println("R$ 0,10 (dez centavos) para saques,");
 		saida.println("R$ 0,10 (dez centavos) para depósitos,");
 		saida.println("e R$ 0,20 (vinte centavos) para transfer�ncias.\n");
     	saida.println("Gastos totais nas operações: " + ((ContaCorrente) conta).getTributacao());
+    	EscritorRelatorio.escritorTributacaoCC(((ContaCorrente) conta).getTributacao());
     }
 }
