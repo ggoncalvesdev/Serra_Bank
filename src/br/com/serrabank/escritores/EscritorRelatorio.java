@@ -191,5 +191,5 @@ public class EscritorRelatorio {
 				bw.append("--------------------------------------------------");
 				bw.newLine();
 				bw.close();
-		}
+	}
 }

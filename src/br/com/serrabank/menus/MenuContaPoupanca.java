@@ -38,7 +38,7 @@ public class MenuContaPoupanca {
 			break;
 			case 3:
 				MenuInicial.menuInicial(mapaContas, mapaFuncionario);
-				saida.println("Voc� est� saindo do Sistema. Adeus");
+				saida.println("Você está saindo do Sistema. Adeus");
 			break;
 			
 			default: 
@@ -76,7 +76,7 @@ public class MenuContaPoupanca {
             	menuContaPoupanca(conta, mapaContas, mapaFuncionario);
             break;
             default:  
-            	saida.println("Op��o inv�lida"); 
+            	saida.println("Opção inválida"); 
             }
         }while(opcao != 4);
     }

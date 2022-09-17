@@ -60,7 +60,7 @@ public class ContaCorrente extends Conta {
 	    		this.saldo -= 0.20;
 	    		this.saldo = this.saldo - valor;
 	    		destino.setSaldo(destino.getSaldo() + valor);
-}
+	}
 	
 	public void transfereGerente(Gerente destino, double valor) {
     	if(this.saldo + 0.20 < valor) {	
@@ -90,4 +90,3 @@ public class ContaCorrente extends Conta {
 				+ "\n Cpf " + getCpf() + ", Agencia " + agencia;
 	}
 }
-
