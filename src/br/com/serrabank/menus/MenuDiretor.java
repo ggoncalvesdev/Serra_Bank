@@ -64,32 +64,6 @@ public class MenuDiretor extends MenuGerente {
 	        opcao = entrada.nextInt();
 		
 	        switch (opcao)	{
-<<<<<<< HEAD
-			case 1:
-				relatorioSaldoAgencia(funcionario);
-			break;
-			
-			case 2:
-				relatorioTributacaoDiretor(funcionario,mapaFuncionario);
-			break;
-			
-			case 3:
-				calculaRensdimento();
-			break;
-			
-			case 4:
-				relatorioNumeroDeContasDiretor(funcionario);
-			break;
-			
-			case 5:
-				relatorioInfoClientesOrdenado(mapaContas);
-			break;
-			
-			case 6:
-				funcionario.menuFuncionario (funcionario,mapaContas, mapaFuncionario);
-			break;
-			
-=======
 				case 1:
 					relatorioSaldoAgencia(funcionario);
 				break;
@@ -108,7 +82,6 @@ public class MenuDiretor extends MenuGerente {
 				case 6:
 					funcionario.menuFuncionario (funcionario,mapaContas, mapaFuncionario);
 				break;
->>>>>>> 40198f6712431541d9dc690e0e30e0f11cda7397
 			default: 
 				saida.println("Opção inválida\n"); 
 			}
@@ -164,20 +137,12 @@ public class MenuDiretor extends MenuGerente {
 	
 	}
 	
-<<<<<<< HEAD
-	public static void relatorioTributacaoDiretor(Funcionario funcionario,  Map<String, Funcionario> mapaFuncionario) {
-    	System.out.println("O valores cobrados por opera��o banc�ria s�o respectivamente:");
-		System.out.println("R$ 0,10 (dez centavos) para saques,");
-		System.out.println("R$ 0,10 (dez centavos) para dep�sitos,");
-		System.out.println("e R$ 0,20 (vinte centavos) para transfer�ncias.\n");
-=======
     public static void relatorioTributacaoContaCorrente(Conta conta,  Map<String, Cliente> mapaContas) {
 	   	saida.println("Gastos totais nas operações: " + ((ContaCorrente) conta).getTributacao());
 	   	saida.println("O valores cobrados por operação bancária são respectivamente:");
 		saida.println("R$ 0,10 (dez centavos) para saques,");
 		saida.println("R$ 0,10 (dez centavos) para depósitos,");
 		saida.println("e R$ 0,20 (vinte centavos) para trnasferências.\n");
->>>>>>> 40198f6712431541d9dc690e0e30e0f11cda7397
 	   	
 	}
     
