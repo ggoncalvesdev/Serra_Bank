@@ -74,7 +74,7 @@ public class MenuDiretor extends MenuGerente {
 			break;
 			
 			case 2:
-				relatorioTributacao(funcionario,mapaFuncionario);
+				relatorioTributacaoDiretor(funcionario,mapaFuncionario);
 			break;
 			
 			case 3:
@@ -143,13 +143,11 @@ public class MenuDiretor extends MenuGerente {
 	return saldoAgencia;
 	}
 	
-    public static void relatorioTributacaoContaCorrente(Conta conta,  Map<String, Cliente> mapaContas) {
-	   	
-	   	saida.println("Gastos totais nas opera��es: " + ((ContaCorrente) conta).getTributacao());
-	   	saida.println("O valores cobrados por operação bancária são respectivamente:");
-		saida.println("R$ 0,10 (dez centavos) para saques,");
-		saida.println("R$ 0,10 (dez centavos) para depósitos,");
-		saida.println("e R$ 0,20 (vinte centavos) para trnasferências.\n");
+	public static void relatorioTributacaoDiretor(Funcionario funcionario,  Map<String, Funcionario> mapaFuncionario) {
+    	System.out.println("O valores cobrados por opera��o banc�ria s�o respectivamente:");
+		System.out.println("R$ 0,10 (dez centavos) para saques,");
+		System.out.println("R$ 0,10 (dez centavos) para dep�sitos,");
+		System.out.println("e R$ 0,20 (vinte centavos) para transfer�ncias.\n");
 	   	
 	}
     
@@ -193,13 +191,6 @@ public class MenuDiretor extends MenuGerente {
 		}
 	brGerente.close();
 	return contasAg;
-	}
-   
-    public static void relatorioNumeroDeContas(Funcionario funcionario, Map<String, Cliente> mapaContas) {
-    		
-    }
-    
-	public static void saldoAgencias(Funcionario funcionario, Map<String, Cliente> mapaContas) {
 	
 	}
 	

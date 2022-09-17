@@ -1,14 +1,17 @@
 package br.com.serrabank.menus;
 	
-	import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-	import br.com.serrabank.cliente.Cliente;
+import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
 import br.com.serrabank.funcionario.Funcionario;
+import br.com.serrabank.funcionario.Gerente;
 
 
 public class MenuPresidente extends MenuDiretor{
@@ -17,7 +20,7 @@ public class MenuPresidente extends MenuDiretor{
 			int opcao;
 			
 			do {
-				System.out.println("\n\t SERRA BANK - MENU DIRETOR ");
+				System.out.println("\n\t SERRA BANK - MENU PRESIDENTE ");
 				System.out.println("-----------------------------------------");
 				System.out.println("--- Escolha sua opção: ---");
 				System.out.println(" 1 - Relátorios.");
@@ -31,6 +34,7 @@ public class MenuPresidente extends MenuDiretor{
 				break;
 				
 				case 2:
+					MenuInicial.menuInicial(mapaContas, mapaFuncionario);
 					System.out.println("Você está saindo do Sistema. Adeus");
 				break;
 				
@@ -45,7 +49,7 @@ public class MenuPresidente extends MenuDiretor{
 			int opcao;
 			
 			do {
-			System.out.println("\n\tSERRA BANK - MENU DIRETOR - RELATÓRIOS");
+			System.out.println("\n\tSERRA BANK - MENU PRESIDENTE - RELATÓRIOS");
 	        System.out.println("--------------------------------------------------------");
 	        System.out.println("--- Escolha sua opção: ---");
 	        System.out.println(" 1 - Saldo");
@@ -60,11 +64,11 @@ public class MenuPresidente extends MenuDiretor{
 			
 		        switch (opcao)	{
 				case 1:
-				//	saldoAgencias(funcionario,mapaFuncionario);
+					relatorioSaldoAgencia(funcionario);
 				break;
 				
 				case 2:
-					relatorioTributacao(funcionario,mapaFuncionario);
+					relatorioTributacaoPresidente(funcionario,mapaFuncionario);
 				break;
 				
 				case 3:
@@ -72,13 +76,13 @@ public class MenuPresidente extends MenuDiretor{
 				break;
 				
 				case 4:
-					relatorioNumeroDeContas(funcionario, mapaContas);
+					relatorioNumeroDeContasDiretor(funcionario);
 				break;
 				case 5:
 					relatorioInfoClientesOrdenado(mapaContas);
 				break;
 				case 6:
-					relatorioCapitalTotalBanco();
+					relatorioCapitalTotalBanco(opcao);
 				break;
 				case 7:
 					funcionario.menuFuncionario (funcionario,mapaContas, mapaFuncionario);
@@ -87,34 +91,51 @@ public class MenuPresidente extends MenuDiretor{
 				default: System.out.println("Opção inválida\n"); 
 				}
 			}while(opcao != 7);
-		}
-		public static void saldoAgencias() {
-			
-			
-		}
-		  public static void relatorioTributacaoContaCorrente(Conta conta,  Map<String, Cliente> mapaContas) {
-			   
-			   	
-			   	System.out.println("Gastos totais nas opera��es: " + ((ContaCorrente) conta).getTributacao());
-			   	System.out.println("O valores cobrados por operação bancária são respectivamente:");
-				System.out.println("R$ 0,10 (dez centavos) para saques,");
-				System.out.println("R$ 0,10 (dez centavos) para depósitos,");
-				System.out.println("e R$ 0,20 (vinte centavos) para trnasferências.\n");
-			   	
-			    }
-		    
-		    public static void relatorioNumeroDeContas(Funcionario funcionario, Map<String, Cliente> mapaContas) {
-	
-		    }
-			    public static void relatorioInfoClientesOrdenado(Map<String, Cliente> mapaContas)   {
-			    	
-			    	List<Cliente> listaContas = new ArrayList<Cliente>(mapaContas.values());
-
-			        Collections.sort(listaContas);
-			        System.out.println(listaContas);
 		
-			    }
-			public static void relatorioCapitalTotalBanco() {     
+		 
 	}
+		public static void relatorioCapitalTotalBanco (int agencia) throws IOException {
+			
+			BufferedReader br = new BufferedReader(new FileReader(".\\arquivos\\" + "Clientes.txt"));
+			BufferedReader brGerente = new BufferedReader(new FileReader(".\\arquivos\\" + "Funcionarios.txt"));
+			double saldoAgencia = 0;
+			String linha= "";
+			
+			while (true)  {	     
+				linha = br.readLine();			
+				if(linha != null) {
+		        String[] lerlinha = linha.split(";"); 
+			        	saldoAgencia += Integer.parseInt(lerlinha[4]);
+			        	
+				}else
+					break;
+				
+			}
+			br.close();
+			while (true)  {
+	            linha = brGerente.readLine();
+	            if(linha != null) {
+	            String[] lerlinha = linha.split(";"); 
+	                if(Integer.parseInt(lerlinha[0]) == 1){
+	                    if(agencia == Integer.parseInt(lerlinha[5])){
+	                    	saldoAgencia += Integer.parseInt(lerlinha[4]);
+	                    }
+	                }else
+	                    break;
+	            } else 
+	                break;
+	        }
+	    brGerente.close();
+	    System.out.println("O saldo do seu banco é: R$" + saldoAgencia);
+			
+		}
+		  public static void relatorioTributacaoPresidente(Funcionario funcionario,  Map<String, Funcionario> mapaFuncionario) {
+		    	System.out.println("O valores cobrados por opera��o banc�ria s�o respectivamente:");
+				System.out.println("R$ 0,10 (dez centavos) para saques,");
+				System.out.println("R$ 0,10 (dez centavos) para dep�sitos,");
+				System.out.println("e R$ 0,20 (vinte centavos) para transfer�ncias.\n");
+		    	
 }
+}
+
 	
