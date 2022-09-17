@@ -8,19 +8,16 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.funcionario.Funcionario;
-import br.com.serrabank.funcionario.Gerente;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
 
 public class MenuDiretor extends MenuGerente {
-	
 	private static final Scanner entrada = new Scanner(System.in);
 	private static final PrintStream saida = System.out;
 	
@@ -154,7 +151,7 @@ public class MenuDiretor extends MenuGerente {
 		saida.println("R$ 0,10 (dez centavos) para depósitos,");
 		saida.println("e R$ 0,20 (vinte centavos) para trnasferências.\n");
 	   	
-	    }
+	}
     
     public static void relatorioNumeroDeContasDiretor(Funcionario funcionario) throws IOException {
     	saida.println("Deseja sabar o número de contas de qual agência? ");
@@ -198,7 +195,15 @@ public class MenuDiretor extends MenuGerente {
 	return contasAg;
 	}
    
-	    public static void relatorioInfoClientesOrdenado(Map<String, Cliente> mapaContas)   {
+    public static void relatorioNumeroDeContas(Funcionario funcionario, Map<String, Cliente> mapaContas) {
+    		
+    }
+    
+	public static void saldoAgencias(Funcionario funcionario, Map<String, Cliente> mapaContas) {
+	
+	}
+	
+	public static void relatorioInfoClientesOrdenado(Map<String, Cliente> mapaContas)   {
 	    	
 	    	List<Cliente> listaContas = new ArrayList<Cliente>(mapaContas.values());
 

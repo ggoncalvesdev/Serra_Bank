@@ -57,8 +57,7 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public String toString() {
-		return "ContaPoupanca [agencia=" + agencia + ", getSaldo()=" + getSaldo() + ", getNome()=" + getNome()
-				+ ", getSenha()=" + getSenha() + ", getCpf()=" + getCpf() + "]";
+		return "ContaPoupanca:\n Agencia= " + agencia + ", Saldo R$ " + getSaldo() + ", Nome " + getNome()
+				+ "\n Senha " + getSenha() + ", Cpf " + getCpf();
 	}
-
 }
