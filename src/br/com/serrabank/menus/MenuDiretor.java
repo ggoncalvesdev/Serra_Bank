@@ -2,23 +2,24 @@ package br.com.serrabank.menus;
 
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 
 import br.com.serrabank.cliente.Cliente;
-import br.com.serrabank.funcionario.Funcionario;
 import br.com.serrabank.conta.Conta;
 import br.com.serrabank.conta.conta_corrente.ContaCorrente;
+import br.com.serrabank.funcionario.Funcionario;
 
 public class MenuDiretor extends MenuGerente {
 	
-	private static final Scanner entrada = new Scanner(System.in);
 	private static final PrintStream saida = System.out;
 	
 	public static void menuDiretor(Funcionario funcionario, Map<String, Cliente> mapaContas,Map<String, Funcionario> mapaFuncionario) throws IOException  {
@@ -97,10 +98,6 @@ public class MenuDiretor extends MenuGerente {
 			}
 		}while(opcao != 4);
 	}
-//	public static void saldoAgencias() {
-//		
-//		
-//	}
 	
     public static void relatorioTributacaoContaCorrente(Conta conta,  Map<String, Cliente> mapaContas) {
 	   
@@ -111,14 +108,17 @@ public class MenuDiretor extends MenuGerente {
 		saida.println("R$ 0,10 (dez centavos) para depósitos,");
 		saida.println("e R$ 0,20 (vinte centavos) para trnasferências.\n");
 	   	
-	    }
+	}
     
     public static void relatorioNumeroDeContas(Funcionario funcionario, Map<String, Cliente> mapaContas) {
-    	
-    	
-    	
+    		
     }
-	    public static void relatorioInfoClientesOrdenado(Map<String, Cliente> mapaContas)   {
+    
+	public static void saldoAgencias(Funcionario funcionario, Map<String, Cliente> mapaContas) {
+	
+	}
+	
+	public static void relatorioInfoClientesOrdenado(Map<String, Cliente> mapaContas)   {
 	    	
 	    	List<Cliente> listaContas = new ArrayList<Cliente>(mapaContas.values());
 

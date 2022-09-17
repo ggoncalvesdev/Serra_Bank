@@ -104,9 +104,7 @@ public class MenuPresidente extends MenuDiretor{
 			    }
 		    
 		    public static void relatorioNumeroDeContas(Funcionario funcionario, Map<String, Cliente> mapaContas) {
-		    	
-		    	
-		    	
+	
 		    }
 			    public static void relatorioInfoClientesOrdenado(Map<String, Cliente> mapaContas)   {
 			    	
@@ -114,11 +112,9 @@ public class MenuPresidente extends MenuDiretor{
 
 			        Collections.sort(listaContas);
 			        System.out.println(listaContas);
-			    	
-			    	
-			      		
+		
 			    }
 			public static void relatorioCapitalTotalBanco() {     
-			}
+	}
 }
 	
