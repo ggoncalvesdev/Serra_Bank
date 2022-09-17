@@ -18,7 +18,7 @@ public class MenuInicial {
 		
 		do {
 		
-		      Leitor.leitorBanner("C:/Users/User/Desktop/api-delivery/api-delivery/Serra-Bank/Serra_Bank/arquivos/banner.txt");
+		    Leitor.leitorBanner(".//arquivos/banner.txt");
 
 			System.out.println("----------------------------------------------");
 			System.out.println("--- Você é cliente ou Funcionario? ---\n");
