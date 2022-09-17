@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import br.com.serrabank.cliente.Cliente;
 import br.com.serrabank.conta.Conta;
+import br.com.serrabank.escritores.EscritorRelatorio;
 import br.com.serrabank.exception.SaldoInsuficienteException;
 import br.com.serrabank.funcionario.Funcionario;
 
@@ -110,7 +111,7 @@ public class MenuContaPoupanca {
 		}while(opcao != 3);
 	}
 	
-	private static void deposito(Conta conta,  Map<String, Cliente> mapaContas) {
+	private static void deposito(Conta conta,  Map<String, Cliente> mapaContas) throws IOException {
         saida.println("Quanto deseja depositar? \n");
         double valor = entrada.nextDouble();
         
@@ -123,7 +124,7 @@ public class MenuContaPoupanca {
 		}
     }
 
-    private static void saque(Conta conta,  Map<String, Cliente> mapaContas) {
+    private static void saque(Conta conta,  Map<String, Cliente> mapaContas) throws IOException {
         saida.println("Quanto deseja Sacar? \n");
         double valor = entrada.nextDouble();
       
@@ -142,7 +143,7 @@ public class MenuContaPoupanca {
         saida.print("\nSeu saldo é: " + conta.getSaldo() + "\n");
     }
 
-	private static void transferencia(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) {
+	private static void transferencia(Conta conta, Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {
 		saida.print("Digite o cpf do titular que deseja transferir: \n");
         String cpf = entrada.next();
         saida.print("Quanto deseja transferir?  \n");
@@ -164,7 +165,7 @@ public class MenuContaPoupanca {
 		}
 	}
 
-    public static void calculaRensdimento()	{
+    public static void calculaRensdimento() throws IOException	{
     	saida.println("Qual valor deseja colocar na poupança? ");
     	double dinheiro = entrada.nextDouble();
     	saida.println("E por quanto tempo deseja deixar ele render? ");
@@ -172,5 +173,6 @@ public class MenuContaPoupanca {
     		
     	double rendimento = (dinheiro*0.05)*dias;
     	saida.println("\nO valor escolhido pelo cliente renderá R$" + rendimento + " em " + dias + " dias.\n");
+    	EscritorRelatorio.escritorSimRendimento(dinheiro, dias, rendimento);
     }
 }

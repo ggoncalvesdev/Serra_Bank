@@ -3,20 +3,10 @@ package br.com.serrabank.menus;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
-<<<<<<< HEAD
-=======
 import java.util.Scanner;
-
->>>>>>> 40198f6712431541d9dc690e0e30e0f11cda7397
 import br.com.serrabank.cliente.Cliente;
-import br.com.serrabank.conta.Conta;
-import br.com.serrabank.conta.conta_corrente.ContaCorrente;
 import br.com.serrabank.funcionario.Funcionario;
-import br.com.serrabank.funcionario.Gerente;
 
 
 public class MenuPresidente extends MenuDiretor{

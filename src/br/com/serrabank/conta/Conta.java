@@ -1,5 +1,7 @@
 package br.com.serrabank.conta;
 
+import java.io.IOException;
+
 import br.com.serrabank.cliente.Cliente;
 
 public abstract class Conta extends Cliente {
@@ -27,11 +29,11 @@ public abstract class Conta extends Cliente {
 		numeroDeContasCadastradas ++;
 	}
 		
-	public abstract void sacar(double valor);
+	public abstract void sacar(double valor) throws IOException;
 	
-	public abstract void depositar(double deposito);
+	public abstract void depositar(double deposito) throws IOException;
 	
-	public abstract void transfere(Conta destino, double valor);
+	public abstract void transfere(Conta destino, double valor) throws IOException;
 	
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
