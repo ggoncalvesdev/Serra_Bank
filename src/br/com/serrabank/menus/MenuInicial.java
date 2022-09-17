@@ -12,7 +12,7 @@ import br.com.serrabank.login.Login;
 
 public class MenuInicial {
 	
-	private static final Scanner ler = new Scanner(System.in);
+	private static final Scanner ler = new Scanner(System.in) ;
 	private static final PrintStream saida = System.out;
 
 	public static void menuInicial(Map<String, Cliente> mapaContas, Map<String, Funcionario> mapaFuncionario) throws IOException {

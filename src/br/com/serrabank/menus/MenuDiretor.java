@@ -100,7 +100,7 @@ public class MenuDiretor extends MenuGerente {
 		BufferedReader brGerente = new BufferedReader(new FileReader(".\\arquivos\\" + "Funcionarios.txt"));
 		
 		double saldoAgencia = 0;
-		String linha = "";
+		String linha= "";
 		
 		while (true)  {	     
 			linha = br.readLine();	
